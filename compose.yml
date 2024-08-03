@@ -86,7 +86,7 @@ services:
     # image: python:3.9
     image: mtips5s_docker_jenkins:dev_1
     container_name: mtips5s_nodejs
-    env_file: .env
+    # env_file: .env
     working_dir: /app
     build: .
     # command: >

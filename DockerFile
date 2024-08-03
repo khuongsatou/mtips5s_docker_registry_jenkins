@@ -1,5 +1,5 @@
 # Sử dụng một image Node.js chính thức từ Docker Hub
-FROM --platform=linux/amd64 node:14
+FROM node:14
 
 # Tạo và chuyển sang thư mục /app
 WORKDIR /app
@@ -16,5 +16,5 @@ COPY . .
 # Mở cổng mà ứng dụng sẽ chạy
 EXPOSE 3000
 
-# Khởi động ứng dụng
-CMD ["nodemon", "app.js"]
+# Khởi động ứng dụng bằng nodemon
+CMD ["npx", "nodemon", "app.js"]

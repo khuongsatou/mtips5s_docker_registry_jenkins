@@ -1,4 +1,8 @@
 # Hello
+docker build --platform linux/amd64 -t khuong123/mtips5s_docker_jenkins:dev_1 .
+docker push khuong123/mtips5s_docker_jenkins:dev_1
+docker compose up --remove-orphans --build -d
+
 # Config nodemon in terminal
 sudo npm install -g --force nodemon
 
