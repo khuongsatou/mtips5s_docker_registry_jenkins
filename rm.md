@@ -55,3 +55,4 @@ openJDK-native-plugin
 # Config cho đúng Dockerfile
 
 
+git config --global core.ignorecase false
