@@ -5,9 +5,10 @@ pipeline {
             steps {
                 // git branch: 'main', url: 'https://gitlab.com/vankhuong/mtips5s_jenkins.git'
                 echo 'hello world'
+                git branch: 'main', url: 'https://github.com/khuongsatou/mtips5s_docker_registry_jenkins.git'
             }
         }
-        stage('Clone') {
+        stage('Build Docker and Push') {
             steps {
                 // This step should not normally be used in your script. Consult the inline help for details.
                 withDockerRegistry(credentialsId: 'mtips5s_gitlab_token_deloy', url: 'https://index.docker.io/v1/') {
