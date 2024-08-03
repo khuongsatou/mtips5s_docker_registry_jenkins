@@ -19,6 +19,8 @@ pipeline {
                 withDockerRegistry(credentialsId: 'mtips5s_docker', url: 'https://index.docker.io/v1/') {
                     // some block
                     echo 'hello world'
+                    sh 'docker build --platform linux/amd64 -t khuong123/mtips5s_docker_jenkins:dev_1 .'
+                    sh 'docker push khuong123/mtips5s_docker_jenkins:dev_1'
                 }
             }
         }
