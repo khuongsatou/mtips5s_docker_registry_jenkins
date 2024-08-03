@@ -12,6 +12,8 @@ pipeline {
                 // This step should not normally be used in your script. Consult the inline help for details.
                 withDockerRegistry(credentialsId: 'mtips5s_gitlab_token_deloy', url: 'https://index.docker.io/v1/') {
                     // some block
+                    sh 'docker build --platform linux/amd64 -t khuong123/mtips5s_docker_jenkins:dev_1 .'
+                    sh 'docker push khuong123/mtips5s_docker_jenkins:dev_1'
                 }
             }
         }

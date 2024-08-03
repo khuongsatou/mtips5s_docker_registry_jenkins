@@ -33,3 +33,6 @@ gldt-29htvHVuHQphSN8P68d7
 -> username: key
 -> password:  token 
 
+
+# Cấu hình jenkins 
+
