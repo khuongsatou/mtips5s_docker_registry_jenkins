@@ -40,3 +40,15 @@ gldt-29htvHVuHQphSN8P68d7
 
 # Cấu hình jenkins 
 
+
+# Thêm plugin cần thiết vào jenkins
+docker
+docker pipeline
+docker compose
+docker commons
+docker api
+CloudBees Docker Build and Pushlish
+docker build step
+Eclipse Temurin installer
+openJDK-native-plugin
+
