@@ -52,3 +52,6 @@ docker build step
 Eclipse Temurin installer
 openJDK-native-plugin
 
+# Config cho đúng Dockerfile
+
+
