@@ -56,3 +56,7 @@ openJDK-native-plugin
 
 
 git config --global core.ignorecase false
+
+
+git config core.ignorecase false
+
