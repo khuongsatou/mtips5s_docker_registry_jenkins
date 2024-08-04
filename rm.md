@@ -1,6 +1,7 @@
 # Hello
-docker build --platform linux/amd64 -t khuong123/mtips5s_docker_jenkins:dev_1 .
-docker push khuong123/mtips5s_docker_jenkins:dev_1
+docker build --platform linux/amd64 -t khuong123/mtips5s_chat:dev_1 .
+docker push khuong123/mtips5s_chat:dev_1
+docker pull khuong123/mtips5s_chat:dev_1
 docker compose up --remove-orphans --build -d
 
 # Config nodemon in terminal
