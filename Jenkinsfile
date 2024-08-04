@@ -15,6 +15,14 @@ pipeline {
                     sh 'docker push khuong123/mtips5s_docker_jenkins:dev_1'
                 }
             }
+        } 
+        stage('SSH Remote to project') {
+            steps {
+                sshagent(['mtips5s_ssh']) {
+                    // some block
+                    sh 'ssh -o StrictHostKeyChecking=no -l root 45.77.242.223 uname -a touch test.txt'
+                }
+            }
         }
     }
 }
