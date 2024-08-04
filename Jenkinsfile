@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git branch: 'main', url: 'https://github.com/khuongsatou/mtips5s_docker_registry_jenkins.git'
+                // git branch: 'main', url: 'https://github.com/khuongsatou/mtips5s_docker_registry_jenkins.git'
+                echo 'hello world'
             }
         }
         stage('Build Docker and Push') {
@@ -20,10 +21,17 @@ pipeline {
             steps {
                 sshagent(credentials: ['mtips5s_ssh_2'], ignoreMissing: true) {
                     // some block
-                    sh 'ssh -o StrictHostKeyChecking=no -l root 45.77.242.223 ls'
+                    // sh 'ssh -o StrictHostKeyChecking=no -l root 45.77.242.223'
                     // sh 'cd /home/mtips5s'
                     // sh 'docker pull khuong123/mtips5s_docker_jenkins:dev_1'
                     // sh 'docker compose up --remove-orphans --build -d'
+                    sh '''
+                            ssh -o StrictHostKeyChecking=no root@45.77.242.223 << 'EOF'
+                            cd /home/mtips5s
+                            docker pull khuong123/mtips5s_docker_jenkins:dev_1
+                            docker compose up --remove-orphans --build -d
+                            EOF
+                        '''
                 }
             }
         }
