@@ -22,7 +22,7 @@ pipeline {
                 script {
                     def deploying = "#!/bin/bash\n"+
                     "cd /home/mtips5s\n"+
-                    "docker pull khuong123/mtips5s_docker_jenkins:dev_1\n"
+                    "docker pull khuong123/mtips5s_docker_jenkins:dev_1\n"+
                     "docker compose up --remove-orphans --build -d\n"
                     
 
