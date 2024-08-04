@@ -18,9 +18,9 @@ pipeline {
         } 
         stage('SSH Remote to project') {
             steps {
-                sshagent(['mtips5s_ssh']) {
+                sshagent(['mtips5s_ssh_2']) {
                     // some block
-                    sh 'ssh -o StrictHostKeyChecking=no -l root 45.77.242.223 uname -a touch test.txt'
+                    sh 'ssh -o StrictHostKeyChecking=no -l root 45.77.242.223 touch test.txt'
                 }
             }
         }
