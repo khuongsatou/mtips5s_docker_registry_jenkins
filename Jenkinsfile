@@ -21,16 +21,16 @@ pipeline {
             steps {
                 sshagent(credentials: ['mtips5s_ssh_2'], ignoreMissing: true) {
                     // some block
-                    // sh 'ssh -o StrictHostKeyChecking=no -l root 45.77.242.223'
-                    // sh 'cd /home/mtips5s'
-                    // sh 'docker pull khuong123/mtips5s_docker_jenkins:dev_1'
-                    // sh 'docker compose up --remove-orphans --build -d'
-                    sh '''
-                            ssh -o StrictHostKeyChecking=no root@45.77.242.223 \
-                            cd /home/mtips5s \
-                            docker pull khuong123/mtips5s_docker_jenkins:dev_1 \
-                            docker compose up --remove-orphans --build -d \
-                        '''
+                    sh 'ssh -o StrictHostKeyChecking=no -l root 45.77.242.223'
+                    sh 'cd /home/mtips5s'
+                    sh 'docker pull khuong123/mtips5s_docker_jenkins:dev_1'
+                    sh 'docker compose up --remove-orphans --build -d'
+                    // sh '''
+                    //         ssh -o StrictHostKeyChecking=no root@45.77.242.223 
+                    //         cd /home/mtips5s 
+                    //         docker pull khuong123/mtips5s_docker_jenkins:dev_1 
+                    //         docker compose up --remove-orphans --build -d 
+                    //     '''
                 }
             }
         }
