@@ -19,29 +19,34 @@ pipeline {
         } 
         stage('SSH Remote to project') {
             steps {
-                sshagent(credentials: ['mtips5s_ssh_2'], ignoreMissing: true) {
-                    // some block
-                    // sh '''
-                    //     ssh -o StrictHostKeyChecking=no -l root 45.77.242.223 << EOF
-                    //         cd /home/mtips5s
-                    //         docker pull khuong123/mtips5s_docker_jenkins:dev_1
-                    //         docker compose up --remove-orphans --build -d
-                    //     EOF
-                    // '''
-                    sh '''
-                        cat > deploy.sh << 'EOF'
-                        #!/bin/bash
-                        ssh -o StrictHostKeyChecking=no -l root 45.77.242.223 << 'EOS'
-                            cd /home/mtips5s
-                            docker pull khuong123/mtips5s_docker_jenkins:dev_1
-                            docker compose up --remove-orphans --build -d
-                        EOS
-                        EOF
-                        chmod +x deploy.sh
-                        ./deploy.sh
-                        rm deploy.sh
-                    '''
+                script {
+                    def deploying = "#!/bin/bash\n"+
+                    "cd /home/mtips5s\n"+
+                    "docker pull khuong123/mtips5s_docker_jenkins:dev_1\n"
+                    "docker compose up --remove-orphans --build -d\n"
+                    
+
+                    sshagent(credentials: ['mtips5s_ssh_2'], ignoreMissing: true) {
+                        // some block
+                        // sh '''
+                        //     cat > deploy.sh << 'EOF'
+                        //     #!/bin/bash
+                        //     ssh -o StrictHostKeyChecking=no -l root 45.77.242.223 << 'EOS'
+                        //         cd /home/mtips5s
+                        //         docker pull khuong123/mtips5s_docker_jenkins:dev_1
+                        //         docker compose up --remove-orphans --build -d
+                        //     EOS
+                        //     EOF
+                        //     chmod +x deploy.sh
+                        //     ./deploy.sh
+                        //     rm deploy.sh
+                        // '''
+                        sh """
+                            ssh -o StrictHostKeyChecking=no -l root 45.77.242.223 "echo \\\"${deploying}\\\" > deploy.sh && chmod +x deploy.sh && ./deploy.sh"
+                        """
+                    }
                 }
+               
             }
         }
     }
